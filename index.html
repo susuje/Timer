@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Timer</title>
+</head>
+<body>
+    <div class="wrapper">
+        <img class="logo" src="./img/Group-logo.png">
+        <section class="timer-box">
+            <h1>TIMER</h1>
+            <hr color="#3D538A">
+            <hr color="#5B75B4">
+            <div class="flexCont">
+                <div class="flexitem">
+                    <p>HRS</p>
+                    <div class="square">00</div>
+                    <img src="./img/dot.png">
+                </div>
+                <div class="flexitem">
+                    <p>Min</p>
+                    <div class="square">00</div>
+                    <img src="./img/dot.png">
+                </div>
+                <div class="flexitem">
+                    <p>Sec</p>
+                    <div class="square" id="sec">00</div>
+                </div>
+            </div>
+            <button class="start" type="button">START</button>
+            <button class="reset" type="button">RESET</button>
+        </section>
+    </div>
+    
+    <script>
+        const sec= document.querySelector("#sec");
+        const btn = document.querySelector("button");
+        let count = 0;
+        sec.addEventListener('click', function(){
+            let value = parseInt(sec.textContent)
+            if (value < 60) {
+                value= value + 10;
+                sec.textContent = value;
+            } else{
+                sec.textContent = value - 10;
+            }
+            btn.style.background="#5180FF";
+        })
+
+        const btnStart= document.querySelector(".start");
+        btnStart.addEventListener('click',function(){
+            let value = parseInt(sec.textContent)
+            console.log(value)
+            setInterval(function(){
+                sec.textContent= value--;
+                if(value===0){
+                alert('끝')
+                }
+            },1000) 
+        })
+    </script>
+</body>
+</html>
